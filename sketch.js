@@ -8,12 +8,13 @@ var sound = null;
 var fourier;
 
 function preload(){
-	sound = loadSound('assets/breaks2.mp3');
+	sound = loadSound('assets/grandsonBlood.mp3');
 }
 
 function setup(){
 	 createCanvas(windowWidth, windowHeight);
 	 background(0);
+	 angleMode(DEGREES);
 	 controls = new ControlsAndInput();
 
 	 //instantiate the fft object
@@ -24,6 +25,8 @@ function setup(){
 	 vis.add(new Spectrum());
 	 vis.add(new WavePattern());
 	 vis.add(new Needles());
+	 vis.add(new spectrumCircle());
+	 vis.add(new micInput())
 
 }
 

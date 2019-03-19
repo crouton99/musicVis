@@ -8,17 +8,11 @@ function ControlsAndInput(){
 	this.playbackButton = new PlaybackButton();
 
 	//make the window fullscreen or revert to windowed
-    var fs = fullscreen()
-    
 	this.mousePressed = function(){
-		//???
-		//check if the playback button has been clicked
-		//if not make the visualisation fullscreen
-        if(this.playbackButton.hitCheck() == true){
-        }
-        else{
-            fs = fullscreen(1)
-        }
+		if(!this.playbackButton.hitCheck()){
+			var fs = fullscreen();
+			fullscreen(!fs);
+		}
 	};
 
 	//responds to keyboard presses
@@ -57,11 +51,10 @@ function ControlsAndInput(){
 
 	this.menu = function(){
 		//draw out menu items for each visualisation
-		//???
-        
-        for(var i = 0; i < vis.visuals.length;i++){
-            text(i+1 + "." + vis.visuals[i].name,100,i*60+80);
-        }
+		for(var i = 0; i < vis.visuals.length; i++){
+			var yLoc = 70 + i*40;
+			text((i+1) + ":  " +vis.visuals[i].name, 100, yLoc);
+		}
 	};
 }
 

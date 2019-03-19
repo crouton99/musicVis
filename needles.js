@@ -36,23 +36,21 @@ function Needles(){
 		for(var i = 0; i < this.plotsDown; i++){
 			for(var j = 0; j < this.plotsAcross; j++){
 				
-				/*calculate the size of the plots
-				var x = ??
-				var y = ??
-				var w = ??
-				var h = ??
-				*/
+				//calculate the size of the plots
+				var x = this.pad + j*this.plotWidth;
+				var y = this.pad + i*this.plotHeight;
+				var w = this.plotWidth-this.pad;
+				var h = this.plotHeight-this.pad;
+				
 				//draw a rectangle at that location and size
 				rect(x, y, w, h);
-				
 				//add on the ticks
-				// ??
+				this.ticks(x+w/2, y+h, this.frequencyBins[currentBin]);
 				
 				var energy = fourier.getEnergy(this.frequencyBins[currentBin]);
 				
 				//add the needle
-				// ??
-				
+				this.needle(energy, x+w/2, y+h);
 				currentBin++;
 			}
 		}	
