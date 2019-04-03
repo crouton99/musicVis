@@ -9,6 +9,7 @@ function PlaybackButton(){
 	//flag to determine whether to play or pause after button click and
 	//to determine which icon to draw
 	this.playing = false;
+	this.currentSong = 3;
 
 	this.draw = function(){
 		if(this.playing){
@@ -25,15 +26,29 @@ function PlaybackButton(){
 	//@returns true if clicked false otherwise.
 	this.hitCheck = function(){
 		if(mouseX > this.x && mouseX < this.x + this.width && mouseY > this.y && mouseY < this.y + this.height){
-			if (sound.isPlaying()) {
-    			sound.pause();
+			if (sounds[this.currentSong].isPlaying()) {
+    			sounds[this.currentSong].pause();
   			} else {
-    			sound.loop();
+    			sounds[this.currentSong].loop();
   			}
   			this.playing = !this.playing;
   			return true;
 		}
 			return false;
 	};
+
+	this.changeSong = function(newSong){
+		if(newSong != this.currentSong){
+			if (sounds[this.currentSong].isPlaying()) {
+				sounds[this.currentSong].pause();
+				this.currentSong = newSong;
+				sounds[this.currentSong].loop();
+			} else {
+				this.currentSong = newSong;
+				sounds[this.currentSong].loop();
+				sounds[this.currentSong].pause();
+			}
+		}
+	}
 
 }

@@ -3,12 +3,17 @@ var controls = null;
 //store visualisations in a container
 var vis = null;
 //variable for the p5 sound object
-var sound = null;
+var sounds = [];
+var songNames = [];
 //variable for p5 fast fourier transform
 var fourier;
 
 function preload(){
-	sound = loadSound('assets/grandsonBlood.mp3');
+	sounds.push(loadSound('assets/grandsonBlood.mp3'));
+	sounds.push(loadSound('assets/breaks2.mp3'));
+	sounds.push(loadSound('assets/gaulinMoonlight.mp3'));
+	sounds.push(loadSound('assets/zeroLeave.mp3'));
+	songNames = ["Blood","Breaks","Moonlight","Leave"];
 }
 
 function setup(){
@@ -26,7 +31,8 @@ function setup(){
 	 vis.add(new WavePattern());
 	 vis.add(new Needles());
 	 vis.add(new spectrumCircle());
-	 vis.add(new micInput())
+	 vis.add(new micInput());
+	 vis.add(new abyssVis());
 
 }
 

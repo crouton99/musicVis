@@ -10,8 +10,8 @@ function ControlsAndInput(){
 	//make the window fullscreen or revert to windowed
 	this.mousePressed = function(){
 		if(!this.playbackButton.hitCheck()){
-			var fs = fullscreen();
-			fullscreen(!fs);
+			// var fs = fullscreen();
+			// fullscreen(!fs);
 		}
 	};
 
@@ -23,9 +23,18 @@ function ControlsAndInput(){
 			this.menuDisplayed = !this.menuDisplayed;
 		}
 
-		if(keycode > 48 && keycode < 58){
+		if(keycode > 48 && keycode < 55){
 			var visNumber = keycode - 49;
 			vis.selectVisual(vis.visuals[visNumber].name); 
+		}
+
+		if(keycode > 54 && keycode < 58){
+			this.playbackButton.changeSong(keycode-49-vis.visuals.length);
+			console.log(keycode-49-vis.visuals.length);
+		}
+
+		if(keycode == 48){
+			this.playbackButton.changeSong(3);
 		}
 	};
 
@@ -43,6 +52,7 @@ function ControlsAndInput(){
 		if(this.menuDisplayed){
 
 			text("Select a visualisation:", 100, 30);
+			text("Select a Song:",100,30+(70 + vis.visuals.length*40));
 			this.menu();
 		}	
 		pop();
@@ -54,6 +64,12 @@ function ControlsAndInput(){
 		for(var i = 0; i < vis.visuals.length; i++){
 			var yLoc = 70 + i*40;
 			text((i+1) + ":  " +vis.visuals[i].name, 100, yLoc);
+		}
+
+		//draws out the names of the songs
+		for(var i = 0; i < songNames.length; i++){
+			var yLoc = 140 + vis.visuals.length*40 + i*40;
+			text((i+1+vis.visuals.length) + ":  " + songNames[i], 100, yLoc);
 		}
 	};
 }

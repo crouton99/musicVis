@@ -1,7 +1,7 @@
 //draw the waveform to the screen
-function CircularWaves(){
+function abyssVis(){
 	//vis name
-	this.name = "circularwaves";
+	this.name = "Abyss Visualiser";
 
 	//draw the wave form to the screen
 	this.draw = function(){
