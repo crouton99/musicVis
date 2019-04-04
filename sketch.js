@@ -27,12 +27,12 @@ function setup(){
 
 	 //create a new visualisation container and add visualisations
 	 vis = new Visualisations();
-	 vis.add(new Spectrum());
+	 vis.add(new abyssVis());
 	 vis.add(new WavePattern());
 	 vis.add(new Needles());
 	 vis.add(new spectrumCircle());
 	 vis.add(new micInput());
-	 vis.add(new abyssVis());
+	 vis.add(new Spectrum());
 
 }
 
