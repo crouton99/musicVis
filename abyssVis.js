@@ -8,8 +8,9 @@ function abyssVis(){
 	//draw the wave form to the screen
 	this.draw = function(){
 		push();
-		noFill();
-		stroke(255, 255, 255);
+		// noFill();
+		fill(255, 255, 255);
+		stroke(0, 0, 0);
 		strokeWeight(2);
 
 		translate(width/2,height/2);
@@ -17,6 +18,7 @@ function abyssVis(){
 		//calculate the waveform from the fft.
 		var wave = fourier.waveform();
 
+		//this is the center circle
 		for (var i = 0; i < wave.length; i++){
 			//for each element of the waveform map it to screen 
 			//coordinates and make a new vertex at the point.
@@ -30,15 +32,15 @@ function abyssVis(){
 			// var x = i/wave.length*width;
 			// var y = wave[i]*100;
 
-			positionInCircle = i/wave.length*360;
+			positionInCircle = i/wave.length*2*Math.PI;
 
-			var x = Math.cos(positionInCircle)*radius+(wave[i]*100);
-			var y = Math.sin(positionInCircle)*radius+(wave[i]*100);
+			var x = Math.cos(positionInCircle)*radius+wave[i]*100;
+			var y = Math.sin(positionInCircle)*radius+wave[i]*100;
 
-			vertex(x, y);
+			curveVertex(x, y);
 		}
-
-		endShape();
+		
+		endShape(CLOSE);
 		pop();
 	};
 }
