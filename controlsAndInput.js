@@ -10,8 +10,8 @@ function ControlsAndInput(){
 	//make the window fullscreen or revert to windowed
 	this.mousePressed = function(){
 		if(!this.playbackButton.hitCheck()){
-			// var fs = fullscreen();
-			// fullscreen(!fs);
+			var fs = fullscreen();
+			fullscreen(!fs);
 		}
 	};
 
@@ -63,13 +63,25 @@ function ControlsAndInput(){
 		//draw out menu items for each visualisation
 		for(var i = 0; i < vis.visuals.length; i++){
 			var yLoc = 70 + i*40;
+
+			if(vis.visuals[i].name == vis.selectedVisual.name){
+				fill("yellow");
+			}
+
 			text((i+1) + ":  " +vis.visuals[i].name, 100, yLoc);
+			fill("white");
 		}
 
 		//draws out the names of the songs
 		for(var i = 0; i < songNames.length; i++){
 			var yLoc = 140 + vis.visuals.length*40 + i*40;
+
+			if(i == this.playbackButton.currentSong){
+				fill("yellow");
+			}
+
 			text((i+1+vis.visuals.length) + ":  " + songNames[i], 100, yLoc);
+			fill("white");
 		}
 	};
 }

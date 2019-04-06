@@ -7,6 +7,7 @@ var sounds = [];
 var songNames = [];
 //variable for p5 fast fourier transform
 var fourier;
+var fourierSmooth;
 
 function preload(){
 	sounds.push(loadSound('assets/grandsonBlood.mp3'));
@@ -14,6 +15,10 @@ function preload(){
 	sounds.push(loadSound('assets/gaulinMoonlight.mp3'));
 	sounds.push(loadSound('assets/zeroLeave.mp3'));
 	songNames = ["Blood","Breaks","Moonlight","Leave"];
+
+	//instantiating the fourier object used to analyse the music
+	fourier = new p5.FFT(0.0);
+	fourierSmooth = new p5.FFT();
 }
 
 function setup(){
@@ -21,9 +26,6 @@ function setup(){
 	 background(0);
 	 angleMode(DEGREES);
 	 controls = new ControlsAndInput();
-
-	 //instantiate the fft object
-	 fourier = new p5.FFT();
 
 	 //create a new visualisation container and add visualisations
 	 vis = new Visualisations();
