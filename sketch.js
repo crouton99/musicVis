@@ -10,11 +10,11 @@ var fourier;
 var fourierSmooth;
 
 function preload(){
-	sounds.push(loadSound('assets/grandsonBlood.mp3'));
+	sounds.push(loadSound('assets/Goodie Bag.mp3'));
 	sounds.push(loadSound('assets/breaks2.mp3'));
 	sounds.push(loadSound('assets/gaulinMoonlight.mp3'));
 	sounds.push(loadSound('assets/zeroLeave.mp3'));
-	songNames = ["Blood","Breaks","Moonlight","Leave"];
+	songNames = ["Goodie Bag","Breaks","Moonlight","Leave"];
 
 	//instantiating the fourier object used to analyse the music
 	fourier = new p5.FFT(0.0);
@@ -24,7 +24,7 @@ function preload(){
 function setup(){
 	 createCanvas(windowWidth, windowHeight);
 	 background(0);
-	 angleMode(DEGREES);
+	 angleMode(RADIANS);
 	 controls = new ControlsAndInput();
 
 	 //create a new visualisation container and add visualisations
@@ -32,8 +32,6 @@ function setup(){
 	 vis.add(new abyssVis());
 	 vis.add(new WavePattern());
 	 vis.add(new Needles());
-	 vis.add(new spectrumCircle());
-	 vis.add(new micInput());
 	 vis.add(new Spectrum());
 
 }

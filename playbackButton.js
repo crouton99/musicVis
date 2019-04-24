@@ -9,7 +9,7 @@ function PlaybackButton(){
 	//flag to determine whether to play or pause after button click and
 	//to determine which icon to draw
 	this.playing = false;
-	this.currentSong = 3;
+	this.currentSong = 0;
 
 	this.draw = function(){
 		if(this.playing){
