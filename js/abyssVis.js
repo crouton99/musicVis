@@ -4,7 +4,7 @@ function abyssVis(){
 	this.name = "Abyss Visualiser";
 
 	//creates all of the stars
-	var starSpeed = 1;
+	var starSpeed;
 	var bass;
 	var stars = [];
 	for (let i = 0; i < 10000; i++) {
@@ -18,7 +18,7 @@ function abyssVis(){
 
 		bass = fourier.getEnergy("bass")/255;
 
-		starSpeed = 0.1+bass;
+		starSpeed = 1+30*bass;
 		//updates all of the stars
 		push();
 		translate(width/2,height/2);

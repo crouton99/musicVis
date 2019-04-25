@@ -12,9 +12,9 @@ var fourierSmooth;
 function preload(){
 	sounds.push(loadSound('assets/Goodie Bag.mp3'));
 	sounds.push(loadSound('assets/Wii Tennis.mp3'));
-	sounds.push(loadSound('assets/gaulinMoonlight.mp3'));
-	sounds.push(loadSound('assets/zeroLeave.mp3'));
-	songNames = ["Goodie Bag","Wii Tennis","Moonlight","Leave"];
+	sounds.push(loadSound('assets/Whats up Danger.mp3'));
+	sounds.push(loadSound('assets/ZIPLOC.mp3'));
+	songNames = ["Goodie Bag","Wii Tennis","What's Up Danger","Ziploc"];
 
 	//instantiating the fourier object used to analyse the music
 	fourier = new p5.FFT(0.0);
