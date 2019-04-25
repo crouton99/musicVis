@@ -4,9 +4,10 @@ function abyssVis(){
 	this.name = "Abyss Visualiser";
 
 	//creates all of the stars
+	var starSpeed = 1;
 	var bass;
 	var stars = [];
-	for (let i = 0; i < 200; i++) {
+	for (let i = 0; i < 10000; i++) {
 		stars.push(new star());
 	}
 
@@ -15,12 +16,17 @@ function abyssVis(){
 		//analyzes the waveform of the sound, allows to find amplitude of certain frequencies using getEnergy()
 		fourier.analyze();
 
-		bass = fourier.getEnergy("bass")/200;
+		bass = fourier.getEnergy("bass")/255;
+
+		starSpeed = 0.1+bass;
 		//updates all of the stars
-		for (let i = 0; i < 200; i++) {
+		push();
+		translate(width/2,height/2);
+		for (let i = 0; i < stars.length; i++) {
 			stars[i].update();
 			stars[i].draw();
 		}
+		pop();	
 
 		centerCircle('lime',10,10);
 		centerCircle('magenta',-10,-10);
@@ -29,7 +35,7 @@ function abyssVis(){
 	};
 
 	function centerCircle(color,x,y,) {
-		radius = 300;
+		radius = 150;
 		push();
 		fill(color);
 		stroke(0, 0, 0);
@@ -65,18 +71,30 @@ function abyssVis(){
 	}
 
 	function star() {
-		this.x = random(0,width);
-		this.y = random(0,height);
-		this.radius = 0.5;
-		this.z = 0;
+		this.x = random(-width, width);
+		this.y = random(-height, height);
+		this.z = random(width);
+		this.r;
 		
 		this.draw = function() {
 			noStroke();
-			ellipse(this.x,this.y,this.radius);
+
+			var sx = map(this.x / this.z, 0, 1, 0, width);
+			var sy = map(this.y / this.z, 0, 1, 0, height);
+		
+			this.r = map(this.z, 0, width, 16, 0);
+			this.r = this.r * (1+bass *bass)/5;
+			ellipse(sx, sy, this.r);
+
 		}
 
 		this.update = function() {
-			this.radius = bass*bass;
+			this.z -= starSpeed;
+			if (this.z < 1) {
+			  this.z = width;
+			  this.x = random(-width, width);
+			  this.y = random(-height, height);
+			}
 		}
 	}
 }

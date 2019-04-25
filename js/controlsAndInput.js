@@ -23,19 +23,15 @@ function ControlsAndInput(){
 			this.menuDisplayed = !this.menuDisplayed;
 		}
 
-		if(keycode > 48 && keycode < 55){
+		if(keycode > 48 && keycode < 53){
 			var visNumber = keycode - 49;
 			vis.selectVisual(vis.visuals[visNumber].name); 
 		}
 
-		if(keycode > 54 && keycode < 58){
+		if(keycode > 52 && keycode < 57){
 			this.playbackButton.changeSong(keycode-49-vis.visuals.length);
-			console.log(keycode-49-vis.visuals.length);
 		}
 
-		if(keycode == 48){
-			this.playbackButton.changeSong(3);
-		}
 	};
 
 	//draws the playback button and potentially the menu
