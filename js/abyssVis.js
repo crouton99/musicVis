@@ -10,6 +10,7 @@ function abyssVis(){
 	for (let i = 0; i < 10000; i++) {
 		stars.push(new star());
 	}
+		
 
 	//main draw loop for the visualiser
 	this.draw = function(){
@@ -35,7 +36,7 @@ function abyssVis(){
 	};
 
 	function centerCircle(color,x,y,) {
-		radius = 150;
+		radius = 150*mic.getLevel();
 		push();
 		fill(color);
 		stroke(0, 0, 0);

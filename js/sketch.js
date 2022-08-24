@@ -9,6 +9,9 @@ var songNames = [];
 var fourier;
 var fourierSmooth;
 
+//mic input 
+var mic;
+
 function preload(){
 	sounds.push(loadSound('assets/goodiebag.mp3'));
 	sounds.push(loadSound('assets/wiitennis.mp3'));
@@ -16,12 +19,18 @@ function preload(){
 	sounds.push(loadSound('assets/ziploc.mp3'));
 	songNames = ["Goodie Bag","Wii Tennis","What's Up Danger","Ziploc"];
 
-	//instantiating the fourier object used to analyse the music
-	fourier = new p5.FFT(0.0);
-	fourierSmooth = new p5.FFT();
 }
 
 function setup(){
+
+	mic = new p5.AudioIn();
+	mic.start();
+	//instantiating the fourier object used to analyse the music
+	fourier = new p5.FFT(0.0);
+	fourier.setInput(mic);
+	fourierSmooth = new p5.FFT();
+	
+
 	 createCanvas(windowWidth, windowHeight);
 	 background(0);
 	 angleMode(RADIANS);
